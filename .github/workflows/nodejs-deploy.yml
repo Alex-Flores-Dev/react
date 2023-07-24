@@ -47,21 +47,22 @@ jobs:
     steps:
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v3
+      - run: ls -la
       - name: "Publish build page"
         uses: peaceiris/actions-gh-pages@v3.7.3
         if: ${{ success() }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: '.build-code/build'
+          publish_dir: 'build-code/build'
           keep_files: true
           user_name: Alex-Flores
           user_email: alexflores.ind@gmail.com
-          publish_branch: gh_page  
+          publish_branch: gh_page
       - name: Deploy report to Github Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v2
         env:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: '.build-code/build'
+          PUBLISH_DIR: 'build-code/build'
   
