@@ -23,7 +23,11 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: build code
-          path: ./
+          path: |
+            build
+            src
+            package.json
+            package-lock.json
       
   testing:
     needs: build
