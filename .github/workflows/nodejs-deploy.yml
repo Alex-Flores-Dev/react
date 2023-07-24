@@ -19,11 +19,19 @@ jobs:
           node-version: 'latest'
       - run: npm install
       - run: npm run build
+      - name: Code builded
+        uses: actions/upload-artifact@v3
+        with:
+          name: build code
+          path: ./
       
   testing:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Download all workflow run artifacts
+        uses: actions/download-artifact@v3
+      - run: ls -la
       - run: npm test -- --watchAll=false
   
   deployment:
