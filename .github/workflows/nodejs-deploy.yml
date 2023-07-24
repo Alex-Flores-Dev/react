@@ -48,7 +48,7 @@ jobs:
     steps:
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v3
-      - run: ls -la
+      - run: cd build-code && mv * ../
       #- name: "Publish build page"
       #  uses: peaceiris/actions-gh-pages@v3.7.3
       #  if: ${{ success() }}
