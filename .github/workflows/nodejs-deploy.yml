@@ -35,9 +35,10 @@ jobs:
     steps:
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v3
-      - run: cd build-code
-      - run: ls -la
-      - run: npm test -- --watchAll=false
+      - run: |
+          cd build-code
+          ls -la
+          npm test -- --watchAll=false
   
   deployment:
     needs: testing
