@@ -38,18 +38,21 @@ jobs:
       - run: |
           cd build-code
           ls -la
+          npm install
           npm test -- --watchAll=false
   
   deployment:
     needs: testing
     runs-on: ubuntu-latest
     steps:
+      - name: Download all workflow run artifacts
+        uses: actions/download-artifact@v3
       - name: "Publish build page"
         uses: peaceiris/actions-gh-pages@v3.7.3
         if: ${{ success() }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: './build'
+          publish_dir: '.build-code/build'
           keep_files: true
           user_name: Alex-Flores
           user_email: alexflores.ind@gmail.com
