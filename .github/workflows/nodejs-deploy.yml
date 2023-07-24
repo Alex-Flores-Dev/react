@@ -1,0 +1,50 @@
+name: Node.js CI/CD
+run-name: ${{ github.actor }} is pushing a change
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js LATEST
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'latest'
+      - run: npm install
+      - run: npm run build
+      
+  testing:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - run: npm test -- --watchAll=false
+  
+  deployment:
+    needs: testing
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Publish build page"
+        uses: peaceiris/actions-gh-pages@v3.7.3
+        if: ${{ success() }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: './build'
+          keep_files: true
+          user_name: Alex-Flores
+          user_email: alexflores.ind@gmail.com
+          publish_branch: gh_page  
+      - name: Deploy report to Github Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v2
+        env:
+          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: allure-report    
+  
