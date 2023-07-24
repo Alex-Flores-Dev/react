@@ -22,7 +22,7 @@ jobs:
       - name: Code builded
         uses: actions/upload-artifact@v3
         with:
-          name: build code
+          name: build-code
           path: |
             build
             src
@@ -35,6 +35,7 @@ jobs:
     steps:
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v3
+      - run: cd build-code
       - run: ls -la
       - run: npm test -- --watchAll=false
   
