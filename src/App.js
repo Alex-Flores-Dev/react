@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React with Cock
+          Learn React with Cock 2
         </a>
       </header>
     </div>
