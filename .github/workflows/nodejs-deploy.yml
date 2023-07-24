@@ -58,11 +58,17 @@ jobs:
           user_name: Alex-Flores
           user_email: alexflores.ind@gmail.com
           publish_branch: gh_page
-      - name: Deploy report to Github Pages
-        if: always()
-        uses: tanwanimohit/deploy-react-to-ghpages@v1.0.2
-        env:
-          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: 'build-code/build'
+      #- name: Deploy report to Github Pages
+      #  if: always()
+      #  uses: tanwanimohit/deploy-react-to-ghpages@v1.0.2
+      #  env:
+      #    PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #    PUBLISH_BRANCH: gh-pages
+      #    PUBLISH_DIR: 'build-code/build'
+          
+          
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: 'build-code/build'
   
