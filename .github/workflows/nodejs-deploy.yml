@@ -48,11 +48,15 @@ jobs:
     needs: testing
     runs-on: ubuntu-latest
     steps:
-      - name: Download all workflow run artifacts
-        uses: actions/download-artifact@v3
-      - run: cd build-code && mv * ../
-
-          
+      - name: Use Node.js LATEST
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'latest'
+      - run: |
+          ls -la
+          npm install
+          npm run build
+          ls -la
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
