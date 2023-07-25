@@ -43,14 +43,14 @@ jobs:
           ls -la
           npm install
           npm test -- --watchAll=false
-  
+
   deployment:
+    if: github.ref == 'refs/heads/main'
     needs: testing
     runs-on: ubuntu-latest
     steps:
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v3
-      - run: ls -la
       - name: "Publish build page"
         uses: peaceiris/actions-gh-pages@v3.7.3
         if: ${{ success() }}
