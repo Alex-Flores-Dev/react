@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: 'latest'
       - run: npm install
-      - run: npm run build
+      - run: npm run deploy
       - name: Code builded
         uses: actions/upload-artifact@v3
         with:
