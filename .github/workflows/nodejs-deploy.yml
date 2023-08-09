@@ -45,7 +45,7 @@ jobs:
           npm test -- --watchAll=false
 
   deployment:
-    if: github.ref == 'refs/heads/main'
+    #if: github.ref == 'refs/heads/main'
     needs: testing
     runs-on: ubuntu-latest
     steps:
