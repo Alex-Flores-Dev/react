@@ -7,7 +7,7 @@ import {
   LinkNav,
   ButtonNav,
   BoxButton,
-} from "../styled-NavBar";
+} from "../styles/styled-NavBar";
 import robot from "../img/robots.png";
 const NavBar = () => {
   return (
