@@ -1,0 +1,12 @@
+.description{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.description__card{
+    width: 20%;
+    margin: 10px;
+}
+.title__description{
+    margin: 35px 0px;
+}
