@@ -9,7 +9,6 @@ import {
   BoxButton,
 } from "../styled-NavBar";
 import robot from "../img/robots.png";
-import { Link } from "react-router-dom";
 const NavBar = () => {
   return (
     <div>
